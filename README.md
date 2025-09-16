@@ -21,7 +21,5 @@ Using a public REST API (such as [ipapi.co](https://ipapi.co) or [ipstack.com](h
 - Clean, **formatted terminal output** for readability.  
 - Handles **errors and invalid API responses** gracefully.
 
----
 
-## Installation
 
