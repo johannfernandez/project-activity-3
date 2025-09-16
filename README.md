@@ -1,6 +1,17 @@
-# React + Vite
+# Project Activity 3 - Creating an IPV4/IPV6 Address Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This is a prototype Python application that retrieves and displays a computer’s public IPv4 and IPv6 addresses using publicly available REST APIs.
+The application is designed for network technicians who need quick access to IP addressing details for troubleshooting and network diagnostics.
+
+In addition to IP addresses, depending on the chosen API, the application may also display:
+
+- Geolocation information (city, region, country)
+- ISP (Internet Service Provider)
+- ASN (Autonomous System Number) of the ISP
+- Country code
+
+The tool formats this information neatly in the console for easy readability.
 
 Currently, two official plugins are available:
 
