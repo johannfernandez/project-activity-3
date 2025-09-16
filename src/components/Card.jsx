@@ -1,4 +1,5 @@
-function Card({ title, ip, version, country, country_code, region, city, org, asn, latitude, longitude }) {
+function Card({ title, ipInfo }) {
+  const { ip, version, country, country_code, region, city, org, asn, latitude, longitude } = ipInfo;
   return (
     <div className="p-6 outline-1 outline-gray-200 rounded-lg hover:shadow-md transition-shadow duration-300 mb-4">
       <div className="font-bold text-xl mb-2">{title}</div>
