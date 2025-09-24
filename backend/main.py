@@ -12,36 +12,30 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-API_KEY = "cbae7561b0f9d110330f373da8ba45ef" 
-BASE_URL = "http://api.ipstack.com"
+BASE_URL = "https://ipwho.is"
 
 @app.get("/ipinfo/{ip}")
 def get_ip_info(ip: str):
-    url = f"{BASE_URL}/{ip}?access_key={API_KEY}"
+    url = f"{BASE_URL}/{ip}"
     response = requests.get(url)
 
     if response.status_code != 200:
-        raise HTTPException(status_code=500, detail="Failed to fetch data from Ipstack")
+        raise HTTPException(status_code=500, detail="Failed to fetch data from ipwho.is")
 
     data = response.json()
 
-    if (
-        "error" in data
-        or not data.get("ip")
-        or data.get("country_name") is None
-        or (data.get("latitude") == 0 and data.get("longitude") == 0)
-    ):
+    if not data.get("success"):
         raise HTTPException(status_code=400, detail=f'IP address "{ip}" is invalid')
 
     return {
         "ip": data.get("ip"),
-        "version": "IPv4" if "." in data.get("ip", "") else "IPv6",
-        "country": data.get("country_name"),
+        "version": data.get("type"),
+        "country": data.get("country"),
         "country_code": data.get("country_code"),
-        "region": data.get("region_name"),
+        "region": data.get("region"),
         "city": data.get("city"),
-        "org": data.get("connection", {}).get("isp", "Unknown"),
-        "asn": data.get("connection", {}).get("asn", "Unknown"),
+        "org": data.get("connection", {}).get("isp"),
+        "asn": data.get("connection", {}).get("asn"),
         "latitude": data.get("latitude"),
         "longitude": data.get("longitude"),
     }
