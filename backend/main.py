@@ -38,5 +38,4 @@ def get_ip_info(ip: str):
         "asn": data.get("connection", {}).get("asn"),
         "latitude": data.get("latitude"),
         "longitude": data.get("longitude"),
-        "longitude": data.get("longitude"),
     }
