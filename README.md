@@ -1,12 +1,25 @@
-# React + Vite
+# IPv4/IPv6 Address Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+This Python application is designed as a **prototype tool for network technicians** to retrieve and display the computer’s current **public IPv4 and IPv6 addresses**.  
 
-Currently, two official plugins are available:
+Using a public REST API (such as [ipapi.co](https://ipapi.co) or [ipstack.com](https://ipstack.com)), the application also provides additional information, including:  
+- **Geolocation** (City, Region, Country)  
+- **Internet Service Provider (ISP)**  
+- **Autonomous System Number (ASN)**  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Purpose:**  
+- Quickly provide IP addressing information for troubleshooting and monitoring.  
+- Serve as a prototype for potential future network management tools.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+- Retrieve **public IPv4 and IPv6 addresses**.  
+- Display **geolocation information** for each IP.  
+- Show **ISP and ASN** details.  
+- Clean, **formatted terminal output** for readability.  
+- Handles **errors and invalid API responses** gracefully.
+
+
+
