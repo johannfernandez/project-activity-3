@@ -43,6 +43,9 @@ Before running the application, ensure you have the following installed:
 3. For frontend (if included), navigate to the frontend/ folder and install dependencies:
    ```bash
    npm install
+4. Install leaflet for Map integration:
+   ```bash
+   npm install react-leaflet leaflet
 
 ### ▶️ Running the Application
 
