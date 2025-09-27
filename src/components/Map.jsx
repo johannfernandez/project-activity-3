@@ -38,6 +38,7 @@ function Map({ latitude, longitude, city, country }) {
           </Popup>
         </Marker>
       </MapContainer>
+      
     </div>
   );
 }
