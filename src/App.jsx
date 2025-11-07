@@ -22,7 +22,7 @@ function App() {
   };
 
   return (
-    <div className="container mx-auto p-4 mt-8">
+    <div className="container mx-auto p-4 mt-5">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold text-orange-400">
           IPV4/IPV6 Address Information
@@ -41,6 +41,10 @@ function App() {
           <p className="text-gray-700 text-left italic">{error}</p>
         </div>
       )}
+
+      <p className="text-center text-gray-500 text-sm mt-4">
+        &copy; {new Date().getFullYear()} Johann Fernandez. All rights reserved.
+      </p>
     </div>
   );
 }
