@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="container mx-auto p-4 mt-5">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-orange-400">
+        <h1 className="text-3xl font-bold text-blue-500">
           IPV4/IPV6 Address Information
         </h1>
       </div>
@@ -36,7 +36,7 @@ function App() {
       )}
 
       {error && (
-        <div className="p-6 outline-1 outline-gray-200 rounded-lg hover:shadow-md transition-shadow duration-300 mb-4">
+        <div className="mt-4 p-6 outline-1 outline-blue-500 rounded-lg hover:shadow-md transition-shadow duration-300 mb-4">
           <h2 className="font-bold text-xl mb-2">IP Address information not found</h2>
           <p className="text-gray-700 text-left italic">{error}</p>
         </div>

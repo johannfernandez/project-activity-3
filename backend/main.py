@@ -63,9 +63,7 @@ def find_role(entities, role_names):
     return results
 
 
-
 def check_ip_status(ip: str):
-    
     try:
         host = socket.gethostbyname(ip)
     except Exception:
@@ -88,10 +86,24 @@ def check_ip_status(ip: str):
     return "Unreachable"
 
 
-@app.get("/ipinfo/{ip}")
-def get_ip_info(ip: str):
+def resolve_domain_or_ip(value: str):
+    """Return the IP if domain, or return the value if it's already an IP."""
+    try:
+        # If it's a domain, this resolves to IPv4
+        resolved_ip = socket.gethostbyname(value)
+        return resolved_ip
+    except socket.gaierror:
+        # Not resolvable → might still be an IP, allow it
+        return value
+
+
+@app.get("/ipinfo/{query}")
+def get_ip_info(query: str):
+    # ✅ NEW: determine if query is domain or IP
+    resolved_ip = resolve_domain_or_ip(query)
+
     # ----- GEO DATA -----
-    url = f"{BASE_URL}/{ip}"
+    url = f"{BASE_URL}/{resolved_ip}"
     response = requests.get(url)
 
     if response.status_code != 200:
@@ -99,10 +111,10 @@ def get_ip_info(ip: str):
 
     data = response.json()
     if not data.get("success"):
-        raise HTTPException(status_code=400, detail=f'IP address "{ip}" is invalid')
+        raise HTTPException(status_code=400, detail=f'"{query}" is not a valid IP or resolvable domain')
 
     # ----- RDAP LOOKUP -----
-    rdap_url = f"https://rdap.org/ip/{ip}"
+    rdap_url = f"https://rdap.org/ip/{resolved_ip}"
     rdap_res = requests.get(rdap_url).json()
 
     whois = {
@@ -149,9 +161,11 @@ def get_ip_info(ip: str):
         whois["OrgAbuseRef"] = None
 
     # ----- STATUS -----
-    ip_status = check_ip_status(ip)
+    ip_status = check_ip_status(resolved_ip)
 
     return {
+        "input": query,          # what the user typed
+        "resolved_ip": resolved_ip,  # actual IP used
         "ip": data.get("ip"),
         "version": data.get("type"),
         "country": data.get("country"),
