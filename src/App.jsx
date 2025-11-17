@@ -46,6 +46,7 @@ function App() {
         &copy; {new Date().getFullYear()} Johann Fernandez. All rights reserved.
       </p>
     </div>
+    //THIS IS A TEST COMMENT
   );
 }
 
