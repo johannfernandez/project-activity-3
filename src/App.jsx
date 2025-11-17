@@ -46,6 +46,7 @@ function App() {
         &copy; {new Date().getFullYear()} Johann Fernandez. All rights reserved.
       </p>
     </div>
+    //Steven
     //This is the main application component that manages state and handles IP address searches.
   );
 }
